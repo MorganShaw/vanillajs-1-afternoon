@@ -9,12 +9,13 @@ function play(clickedId) {
     if(playerSpan.innerText === "X") {
         playerSpan.innerText = "O";
         clickedElement.innerText = "X";
-        board[clickedID] = "X";
+        board[clickedId] = "X";
     } else {
         playerSpan.innerText = "X";
         clickedElement.innerText = "O";
-        board[clickedID] = "O";
+        board[clickedId] = "O";
     } 
+    
     console.log(board);
    
     const topLeft = board[0];
@@ -26,15 +27,11 @@ function play(clickedId) {
     const bottomLeft = board[6];
     const bottomCenter = board[7];
     const bottomRight = board[8];
-   
+    
     if(topLeft !== undefined && topLeft === topCenter && topLeft === topRight) {
         alert(`${topLeft} is the winner!`);
         return;
     } 
-    if(topLeft !== undefined && topLeft === middleCenter && topLeft === bottomRight) {
-        alert(`${topLeft} is the winner!`);
-        return;
-    }
     if(middleLeft !== undefined && middleLeft === middleCenter && middleLeft === middleRight) {
         alert(`${middleLeft} is the winner!`);
         return;
@@ -43,10 +40,6 @@ function play(clickedId) {
         alert(`${bottomLeft} is the winner!`);
         return;
     } 
-    if(bottomLeft !== undefined && bottomLeft === middleCenter && bottomLeft === topRight) {
-        alert(`${bottomLeft} is the winner!`);
-        return;
-    }
     if(topLeft !== undefined && topLeft === middleLeft && topLeft === bottomLeft) {
         alert(`${topLeft} is the winner!`);
         return;
@@ -59,14 +52,22 @@ function play(clickedId) {
         alert(`${topRight} is the winner!`);
         return;
     } 
+    if(topLeft !== undefined && topLeft === middleCenter && topLeft === bottomRight) {
+        alert(`${topLeft} is the winner!`);
+        return;
+    }
+    if(bottomLeft !== undefined && bottomLeft === middleCenter && bottomLeft === topRight) {
+        alert(`${bottomLeft} is the winner!`);
+        return;
+    }
     
     let boardFull = true;
-    for(let i = 0; i < 8; i++) {
+    for(let i = 0; i <= 8; i++) {
         if(board[i] === undefined) {
-            boardfull = false; 
+            boardFull = false; 
         } 
     }
-    if(boardfull === true) {
+    if(boardFull === true) {
         alert("Cat's game...there is no winner!");
     }
 }
